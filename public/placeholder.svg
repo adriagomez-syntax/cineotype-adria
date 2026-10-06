@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="100%" height="100%">
+  <defs>
+    <!-- Background subtle dark gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141d1f" />
+      <stop offset="100%" stop-color="#0c1517" />
+    </linearGradient>
+
+    <!-- Soft glow on icon -->
+    <filter id="subtleGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Solid / subtle gradient poster background in standard 2:3 ratio -->
+  <rect width="600" height="900" fill="url(#bgGrad)" />
+
+  <!-- Centered Minimalist Image / Photo Icon in Primary Cyan (#27D5E6) -->
+  <g transform="translate(190, 340)">
+    <!-- Ambient soft glow behind icon -->
+    <rect x="10" y="10" width="200" height="180" rx="28" fill="#27D5E6" opacity="0.04" filter="url(#subtleGlow)" />
+
+    <!-- Outer Image Frame with rounded corners -->
+    <rect x="15" y="15" width="190" height="170" rx="24" fill="none" stroke="#27D5E6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Sun / Moon circle icon -->
+    <circle cx="75" cy="72" r="18" fill="#27D5E6" />
+
+    <!-- Minimalist Mountain / Landscape wave peaks -->
+    <path d="M 28 165 L 85 98 C 88 94, 94 94, 97 98 L 138 145 L 155 125 C 158 121, 164 121, 167 125 L 192 155" 
+          fill="none" 
+          stroke="#27D5E6" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+  </g>
+</svg>

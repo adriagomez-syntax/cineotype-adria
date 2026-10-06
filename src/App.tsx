@@ -1,18 +1,22 @@
-import useMovieSearch from "./hooks/useMovieSearch"
+import type { Movie } from "./types/movie";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+import Main from "./components/main/Main";
+import { FavoritesContext } from "./context/FavoritesContext";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 export default function App() {
-
-	const { movies, loading, error } = useMovieSearch("matrix")
-
+	
+	const [favorites, setFavorites] = useLocalStorage<Movie[]>("favorites", [])
+	
 	return (
-		<>
-			{loading
-				? "Lädt..."
-				: error
-					? <p>{error}</p>
-					:movies.map(movie => (
-						<p>{movie.title}</p>
-					))}
-		</>
+		<div className="flex flex-col gap-4 min-h-screen font-primary text-sm text-text bg-background">
+			<FavoritesContext value={{ favorites, setFavorites }}>
+				<Header />
+				<Main />
+				<Footer />
+			</FavoritesContext>
+		</div>
+
 	)
 }

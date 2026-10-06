@@ -1,39 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @import "tailwindcss";
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme {
-	--color-primary: #FFBA62;
-	--color-secondary: #FF8C61;
-	--color-accent-1: #6174FF;
-	--color-accent-2: #61C7FF;
-	--color-accent-3: #764900;
-	--color-text: #2A2A2A;
+	--color-primary: #27D5E6;
+	--color-secondary: #446366;
+	--color-accent-1: #E69727;
+	--color-accent-2: #E65527;
+	--color-accent-3: #665844;
+	--color-text: #172326;
 
-	--color-background: #F3EDE6;
-	--color-background-mid: #FFF9F3;
-	--color-background-dark: #E0D8CF;
+	--color-background: #F5F8F8;
+	--color-background-mid: #E7EEEE;
+	--color-background-dark: #CCD9DA;
 
-	--font-primary: 'Inter', sans-serif;
-	--font-secondary: 'Quicksand', sans-serif;
+	--font-primary: 'DM Sans', sans-serif;
+	--font-secondary: 'Playfair Display', sans-serif;
 
 	--text-2xs: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #C8842F;
-    --color-secondary: #C65A3A;
-    --color-accent-1: #4E5ED9;
-    --color-accent-2: #3FA7D6;
-    --color-accent-3: #ffcb78;
-    --color-text: #F2F2F2;
+    --color-primary: #27D5E6;
+    --color-secondary: #446366;
+    --color-accent-1: #E69727;
+    --color-accent-2: #E65527;
+    --color-accent-3: #665844;
+    --color-text: #EAF3F3;
 
-    --color-background: #1A1A1A;
-    --color-background-mid: #242424;
-    --color-background-dark: #2F2F2F;
+    --color-background: #10191B;
+    --color-background-mid: #182628;
+    --color-background-dark: #0A1011;
   }
 }
 
