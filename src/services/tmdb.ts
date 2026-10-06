@@ -1,4 +1,7 @@
 import type { Movie, SearchResponse, MovieDetails } from "../types/movie";
+import type { TmdbHttpError } from "../types/error";
+import { TmdbError } from "../assets/tmdbError";
+//import { TmdbError } from "../assets/tmdbError";
 
 const BASE_URL = "https://api.themoviedb.org/3"
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
@@ -20,9 +23,16 @@ export async function getMovie(id: number): Promise<MovieDetails> {
 
 	const response = await fetch(url)
 	if (!response.ok) {
-		throw new Error(`TMDB-Fehler: ${response.status}`)
+		const errorResp: TmdbHttpError = await response.json()
+		const error = new TmdbError(errorResp.status_code)
+		throw new Error(`TMDB-Fehler: ${error.errorMessage}`)
 	}
 
 	const data: MovieDetails = await response.json()
 	return data
+}
+
+export function posterUrl(path: string | null, size = "w500"): string {
+	if (!path) { return "/placeholder.png" }
+	return `https://image.tmdb.org/t/p/${size}${path}`
 }
