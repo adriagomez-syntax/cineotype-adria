@@ -1,10 +1,17 @@
-import { useMainContext } from "../../context/MainContext";
-import MovieList from "./MovieList";
+import type { Movie } from "../../types/movie";
+import MovieList from "./list/MovieList";
+import Pagination from "./list/Pagination";
 
-export default function Content() {
+type Props = {
+	query: string
+	movies: Movie[]
+	totalResults: number
+	currentPage: number
+	totalPages: number
+	setPage: (page: number) => void
+}
 
-	const { query, movies } = useMainContext()
-
+export default function Content({ query, movies, totalResults, currentPage, totalPages, setPage }: Props) {
 	return (
 		<div className="flex flex-col gap-4">
 			<div className="flex flex-col gap-1">
@@ -12,9 +19,14 @@ export default function Content() {
 					{"Suchergebnisse für "}
 					<span className="text-primary">„{ query }“</span>
 				</h1>
-				<p className="text-xs text-text/60">{ movies.length } Filme gefunden</p>
+				<p className="text-xs text-text/60">{ totalResults } Filme gefunden</p>
 			</div>
-			<MovieList />
+			<MovieList movies={ movies } />
+			<Pagination
+				currentPage={ currentPage }
+				totalPages={ totalPages }
+				setPage={ setPage }
+			/>
 		</div>
 	)
 }

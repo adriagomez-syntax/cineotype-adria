@@ -1,17 +1,16 @@
-import type { Movie } from "./types/movie";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import { FavoritesContext } from "./context/FavoritesContext";
-import useLocalStorage from "./hooks/useLocalStorage";
+import useFavorites from "./hooks/useFavorites";
 
 export default function App() {
 	
-	const [favorites, setFavorites] = useLocalStorage<Movie[]>("favorites", [])
-	
+	const {favorites, addFavorite, removeFavorite, clearFavorites} = useFavorites()
+
 	return (
 		<div className="flex flex-col gap-4 min-h-screen font-primary text-sm text-text bg-background">
-			<FavoritesContext value={{ favorites, setFavorites }}>
+			<FavoritesContext value={{ favorites, addFavorite, removeFavorite, clearFavorites }}>
 				<Header />
 				<Main />
 				<Footer />

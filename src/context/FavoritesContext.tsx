@@ -1,9 +1,11 @@
-import { createContext, useContext, type Dispatch, type SetStateAction } from "react";
+import { createContext, useContext } from "react";
 import type { Movie } from "../types/movie";
 
 type FavoritesContextType = {
 	favorites: Movie[],
-	setFavorites: Dispatch<SetStateAction<Movie[]>>
+	addFavorite: (movie: Movie) => void
+	removeFavorite: (id: number) => void
+	clearFavorites: () => void
 }
 
 export const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined)

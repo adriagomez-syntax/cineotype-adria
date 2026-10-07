@@ -5,34 +5,53 @@ import { useEffect, useState } from "react";
 
 export default function useMovieSearch(query: string) {
 	const [movies, setMovies] = useState<Movie[]>([])
+	const [totalResults, setTotalResults] = useState(0)
+	const [currentPage, setCurrentPage] = useState(1)
+	const [totalPages, setTotalPages] = useState(0)
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<ErrorClass | null>(null)
 
+	function setPage(page: number) {
+		setCurrentPage(prev => page < 1 || page > totalPages ? prev : page)
+	}
+
 	useEffect(() => {
+		
+		let ignore = false
+		
 		async function load() {
-			if (query.trim() === "") { 
+			if (ignore || query.trim() === "") { 
 				setMovies([])
 				return 
 			}
 
-			setLoading(true)
-			setError(null)
+			if (!ignore) {
+				setLoading(true)
+				setError(null)
+			}
 
 			try {
-				const results = await searchMovies(query)
-				setMovies(results)
+				const results = await searchMovies(query, currentPage)
+				if (!ignore) { 
+					setMovies(results.results)
+					setTotalResults(results.total_results)
+					setTotalPages(results.total_pages)
+				}
 			} catch(err: unknown) {
-				setError(err instanceof ErrorClass ? err
-					: err instanceof Error ? new ErrorClass({ title: "Error", message: err.message }) 
-						: new ErrorClass({ title: "Error", message: "Unbekannter Fehler" })
-				)
+				if (!ignore) {
+					setError(err instanceof ErrorClass ? err
+						: err instanceof Error ? new ErrorClass({ title: "Error", message: err.message }) 
+							: new ErrorClass({ title: "Error", message: "Unbekannter Fehler" }))
+				}
 			} finally {
-				setLoading(false)
+				if (!ignore) { setLoading(false) }
 			}
 		}
 
 		load()
-	}, [query])
 
-	return { movies, loading, error }
+		return () => { ignore = true; }
+	}, [query, currentPage])
+
+	return { movies, totalResults, currentPage, totalPages, loading, error, setPage }
 }
