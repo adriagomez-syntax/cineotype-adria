@@ -10,9 +10,14 @@ export default function Main() {
 	const [query, setQuery] = useState("")
 	const { movies, totalResults, currentPage, totalPages, loading, error, setPage } = useMovieSearch(query)
 
+	function onSearch(newQuery: string) {
+		setPage(1)
+		setQuery(newQuery)
+	}
+
 	return (
 		<main className="flex-1 flex flex-col gap-4 p-4">
-			<SearchBar onSearch={ setQuery } />
+			<SearchBar onSearch={ onSearch } />
 			{loading
 				? <Loader />
 				: error

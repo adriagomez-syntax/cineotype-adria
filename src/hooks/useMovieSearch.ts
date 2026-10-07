@@ -20,8 +20,13 @@ export default function useMovieSearch(query: string) {
 		let ignore = false
 		
 		async function load() {
-			if (ignore || query.trim() === "") { 
+			
+			if (ignore) { return }
+			
+			if (!ignore && query.trim() === "") { 
 				setMovies([])
+				setTotalPages(0)
+				setTotalResults(0)
 				return 
 			}
 

@@ -15,7 +15,9 @@ export default function SearchBar({ onSearch } : SearchBarProps) {
 
 	useEffect(() => 
 		onSearch(debounced)
-	, [onSearch, debounced])
+	
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	, [debounced])
 	
 	/*function handleSubmit(event: React.SubmitEvent) {
 		event.preventDefault()
