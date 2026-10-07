@@ -8,26 +8,25 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY
 export async function searchMovies(query: string): Promise<Movie[]> {
 	const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
 
-	const response = await fetch(url)
-	if (!response.ok) {
-		throw new Error(`TMDB-Fehler: ${response.status}`)
-	}
-
-	const data: SearchResponse = await response.json()
+	const data = await doRequest<SearchResponse>(url)
 	return data.results
 }
 
 export async function getMovie(id: number): Promise<MovieDetails> {
 	const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
 
+	const data = await doRequest<MovieDetails>(url)
+	return data
+}
+
+async function doRequest<T>(url: string): Promise<T> {
 	const response = await fetch(url)
 	if (!response.ok) {
 		const errorResp: TmdbHttpError = await response.json()
-		const error = new TmdbError(errorResp.status_code)
-		throw new Error(`TMDB-Fehler: ${error.errorMessage}`)
+		throw new TmdbError(errorResp.status_code)
 	}
 
-	const data: MovieDetails = await response.json()
+	const data: T = await response.json()
 	return data
 }
 

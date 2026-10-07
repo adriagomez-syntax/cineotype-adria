@@ -1,7 +1,7 @@
 import { createContext, useContext, type Dispatch, type SetStateAction } from "react";
 import type { Movie } from "../types/movie";
 
-export type FavoritesContextType = {
+type FavoritesContextType = {
 	favorites: Movie[],
 	setFavorites: Dispatch<SetStateAction<Movie[]>>
 }

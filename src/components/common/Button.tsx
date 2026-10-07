@@ -1,11 +1,11 @@
-import type { MouseEventHandler, ReactNode } from "react"
+import type { ReactNode } from "react"
 
-interface Props {
+type Props = {
 	type?: "button" | "submit"
-	onClick?: MouseEventHandler<HTMLButtonElement>
+	onClick?: () => void
 	disabled?: boolean
 	className?: string
-	children: ReactNode
+	children?: ReactNode
 }
 
 export default function Button({ type = "button", onClick, disabled = false, className = "", children }: Props) {
