@@ -5,21 +5,33 @@ export default function useFavorites() {
 
 	const [favorites, setFavorites] = useLocalStorage<Movie[]>("favorites", [])
 
-	function addFavorite(movie: Movie) {
-		const movieFind = favorites.find((item) => item.id === movie.id)
+	function isFavorite(id: number) {
+		const findMovie = favorites.find(elem => elem.id === id)
 
-		if (!movieFind) {
-			setFavorites([...favorites, movie])
-		}
+		return typeof findMovie !== "undefined"
+	}
+
+	function addFavorite(movie: Movie) {
+		setFavorites([...favorites, movie])
 	}
 
 	function removeFavorite(id: number) {
 		setFavorites(favorites.filter(item => item.id !== id))
 	}
 
+	function toggleFavorite(movie: Movie) {
+		const findMovie = isFavorite(movie.id)
+
+		if (findMovie) {
+			removeFavorite(movie.id)
+		} else {
+			addFavorite(movie)
+		}
+	}
+
 	function clearFavorites() {
 		setFavorites([])
 	}
 
-	return { favorites, addFavorite, removeFavorite, clearFavorites }
+	return { favorites, isFavorite, removeFavorite, toggleFavorite, clearFavorites }
 }

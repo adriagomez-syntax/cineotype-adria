@@ -9,7 +9,7 @@ export default function EmptyContent() {
 				{"Wonach suchst du "}
 				<span className="text-primary italic">heute</span>?
 			</h1>
-			<h2 className="text-md text-center text-text/60">Tauche ein in Tausende Meisterwerke, visionäre Autorenfilme und zeitlose Ikonen der Filmgeschichte.</h2>
+			<h2 className="text-md text-center text-secondary">Tauche ein in Tausende Meisterwerke, visionäre Autorenfilme und zeitlose Ikonen der Filmgeschichte.</h2>
 		</Card>
 	)
 }

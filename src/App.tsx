@@ -6,11 +6,13 @@ import useFavorites from "./hooks/useFavorites";
 
 export default function App() {
 	
-	const {favorites, addFavorite, removeFavorite, clearFavorites} = useFavorites()
+	const {favorites, isFavorite, removeFavorite, toggleFavorite, clearFavorites} = useFavorites()
+
+
 
 	return (
 		<div className="flex flex-col gap-4 min-h-screen font-primary text-sm text-text bg-background">
-			<FavoritesContext value={{ favorites, addFavorite, removeFavorite, clearFavorites }}>
+			<FavoritesContext value={{ favorites, isFavorite, toggleFavorite, removeFavorite, clearFavorites }}>
 				<Header />
 				<Main />
 				<Footer />

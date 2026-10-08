@@ -3,7 +3,8 @@ import type { Movie } from "../types/movie";
 
 type FavoritesContextType = {
 	favorites: Movie[],
-	addFavorite: (movie: Movie) => void
+	isFavorite: (id: number) => boolean
+	toggleFavorite: (movie: Movie) => void
 	removeFavorite: (id: number) => void
 	clearFavorites: () => void
 }

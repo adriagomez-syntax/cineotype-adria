@@ -24,7 +24,7 @@ export default function Pagination({ currentPage, totalPages, setPage }: Props) 
 	return (
 		<div className="flex justify-center">
 			{ totalPages > 0 &&
-				<ul className="min-w-0 w-fit flex gap-1 p-2 bg-background-mid rounded-xl font-bold text-text/60">
+				<ul className="min-w-0 w-fit flex gap-1 p-2 bg-background-mid rounded-xl font-bold text-secondary">
 					<Button
 						className="not-disabled:hover:bg-background not-disabled:hover:text-primary py-2 px-4 rounded-sm transition duration-300"
 						onClick={() => setPage(currentPage - 1)}

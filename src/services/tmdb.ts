@@ -22,7 +22,7 @@ async function doRequest<T>(url: string): Promise<T> {
 	const response = await fetch(url)
 	if (!response.ok) {
 		const errorResp: TmdbHttpError = await response.json()
-		throw new TmdbError(errorResp.status_code)
+		throw new TmdbError(response.status, errorResp.status_message)
 	}
 
 	const data: T = await response.json()

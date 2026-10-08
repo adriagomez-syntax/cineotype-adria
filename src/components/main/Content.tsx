@@ -11,11 +11,12 @@ type Props = {
 	currentPage: number
 	totalPages: number
 	setPage: (page: number) => void
+	setSelected: (id: number) => void
 }
 
-export default function Content({ query, movies, totalResults, currentPage, totalPages, setPage }: Props) {
+export default function Content({ query, movies, totalResults, currentPage, totalPages, setPage, setSelected }: Props) {
 	return (
-		<div className="flex flex-col gap-4 md:mx-60">
+		<div className="flex flex-col gap-4 md:mx-20 lg:mx-60">
 			{query.trim() === ""
 				? <EmptyContent />
 				: <>
@@ -24,11 +25,14 @@ export default function Content({ query, movies, totalResults, currentPage, tota
 							{"Suchergebnisse für "}
 							<span className="text-primary">„{ query }“</span>
 						</h1>
-						<p className="text-xs text-text/60">{ totalResults } Filme gefunden</p>
+						<p className="text-xs text-secondary">{ totalResults } Filme gefunden</p>
 					</div>
 					{movies.length > 0
 						? <>
-							<MovieList movies={ movies } />
+							<MovieList
+								movies={ movies }
+								setSelected={ setSelected }
+							/>
 							<Pagination
 								currentPage={ currentPage }
 								totalPages={ totalPages }

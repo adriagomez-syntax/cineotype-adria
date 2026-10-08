@@ -15,7 +15,7 @@ export default function ShowError({ error, className = "" }: Props) {
 				<h1 className="font-secondary font-bold text-xl">Ein Fehler gefunden!</h1>
 				<h2 className="font-secondary italic text-lg text-primary">„{ error.title }“</h2>
 			</div>
-			<p className="text-xs text-text/60">{ error.message }</p>
+			<p className="text-xs text-secondary">{ error.message }</p>
 		</Card>
 	)
 }
