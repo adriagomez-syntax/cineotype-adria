@@ -1,11 +1,11 @@
 import { FaXmark } from "react-icons/fa6";
-import Button from "../../../common/Button";
+import Button from "./Button";
 
 type Props = {
 	setOpen: (open: boolean) => void
 }
 
-export default function MovieDetailsClose({ setOpen }: Props) {
+export default function CloseButton({ setOpen }: Props) {
 	return (
 		<div className="flex-1 flex justify-end h-fit">
 			<Button

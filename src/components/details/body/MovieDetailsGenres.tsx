@@ -1,4 +1,4 @@
-import type { Genre } from "../../../../types/movie"
+import type { Genre } from "../../../types/movie"
 
 type Props = {
 	genres: Genre[]

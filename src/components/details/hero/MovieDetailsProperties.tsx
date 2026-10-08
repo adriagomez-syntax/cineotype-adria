@@ -1,5 +1,5 @@
 import { FaCalendar, FaRegClock, FaStar } from "react-icons/fa"
-import { formatTime, printDate } from "../../../../assets/utils/utils"
+import { formatTime, printDate } from "../../../assets/utils/utils"
 
 type Props = {
 	release_date: string

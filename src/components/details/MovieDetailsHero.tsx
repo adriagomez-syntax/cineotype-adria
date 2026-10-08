@@ -1,5 +1,5 @@
-import type { MovieDetails } from "../../../types/movie"
-import MovieDetailsClose from "./hero/MovieDetailsClose"
+import type { MovieDetails } from "../../types/movie"
+import CloseButton from "../common/CloseButton"
 import MovieDetailsImage from "./hero/MovieDetailsImage"
 import MovieDetailsTitle from "./hero/MovieDetailsTitle"
 import MovieDetailsProperties from "./hero/MovieDetailsProperties"
@@ -28,7 +28,7 @@ export default function MovieDetailsHero({ poster_path, release_date, runtime, t
 					/>
 				</div>
 			</div>
-			<MovieDetailsClose setOpen={ setOpen } />
+			<CloseButton setOpen={ setOpen } />
 		</div>
 	)
 }

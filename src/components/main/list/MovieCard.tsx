@@ -5,14 +5,15 @@ import Card from "../../common/Card"
 import FavoriteButton from "../../common/FavoriteButton"
 import { useFavoritesContext } from "../../../context/FavoritesContext"
 import { printDate } from "../../../assets/utils/utils"
+import { useMenuContext } from "../../../context/MenuContext"
 
 type MovieCardProps = {
 	movie: Movie
-	setSelected: (id: number) => void
 }
 
-export default function MovieCard({ movie, setSelected }: MovieCardProps) {
+export default function MovieCard({ movie }: MovieCardProps) {
 	
+	const { selectMovie } = useMenuContext()
 	const { toggleFavorite, isFavorite } = useFavoritesContext()
 	const active = isFavorite(movie.id)
 
@@ -33,14 +34,14 @@ export default function MovieCard({ movie, setSelected }: MovieCardProps) {
 					className="transform group-hover:scale-105 duration-300 cursor-pointer"
 					src={ posterUrl(movie.poster_path) }
 					alt={ movie.title }
-					onClick={ () => setSelected(movie.id) }
+					onClick={ () => selectMovie(movie.id) }
 				/>
 			</div>
 			<div className="flex flex-col gap-1 px-2 w-full">
 				<h1 
 					className="font-secondary text-lg truncate hover:underline cursor-pointer"
 					title={ movie.title }
-					onClick={ () => setSelected(movie.id) }
+					onClick={ () => selectMovie(movie.id) }
 				>
 					{ movie.title }
 				</h1>

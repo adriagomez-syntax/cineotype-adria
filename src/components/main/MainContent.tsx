@@ -11,10 +11,9 @@ type Props = {
 	currentPage: number
 	totalPages: number
 	setPage: (page: number) => void
-	setSelected: (id: number) => void
 }
 
-export default function Content({ query, movies, totalResults, currentPage, totalPages, setPage, setSelected }: Props) {
+export default function MainContent({ query, movies, totalResults, currentPage, totalPages, setPage }: Props) {
 	return (
 		<div className="flex flex-col gap-4 md:mx-20 lg:mx-60">
 			{query.trim() === ""
@@ -31,7 +30,6 @@ export default function Content({ query, movies, totalResults, currentPage, tota
 						? <>
 							<MovieList
 								movies={ movies }
-								setSelected={ setSelected }
 							/>
 							<Pagination
 								currentPage={ currentPage }

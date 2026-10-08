@@ -3,19 +3,20 @@ import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import { FavoritesContext } from "./context/FavoritesContext";
 import useFavorites from "./hooks/useFavorites";
+import Menus from "./components/menus/Menus";
 
 export default function App() {
 	
 	const {favorites, isFavorite, removeFavorite, toggleFavorite, clearFavorites} = useFavorites()
 
-
-
 	return (
 		<div className="flex flex-col gap-4 min-h-screen font-primary text-sm text-text bg-background">
 			<FavoritesContext value={{ favorites, isFavorite, toggleFavorite, removeFavorite, clearFavorites }}>
-				<Header />
-				<Main />
-				<Footer />
+				<Menus>
+					<Header />
+					<Main />
+					<Footer />
+				</Menus>
 			</FavoritesContext>
 		</div>
 

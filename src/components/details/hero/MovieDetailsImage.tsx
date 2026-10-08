@@ -1,4 +1,4 @@
-import { posterUrl } from "../../../../services/tmdb"
+import { posterUrl } from "../../../services/tmdb"
 
 type Props = {
 	title: string
