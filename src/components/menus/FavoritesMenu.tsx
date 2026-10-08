@@ -13,7 +13,7 @@ export default function FavoritesMenu({ open, setOpen }: Props) {
 			open={ open }
 			setOpen={ setOpen }
 			position="top-15 right-0"
-			dimensions="h-full w-full md:max-w-80"
+			dimensions="min-h-15 max-h-[calc(100vh-3.75rem)] w-full md:max-w-80"
 		>
 			<FavoritesContent />
 		</SidebarMenu>

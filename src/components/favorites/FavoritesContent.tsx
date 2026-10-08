@@ -2,6 +2,7 @@ import { FaHeart, FaTrashAlt } from "react-icons/fa"
 import { useFavoritesContext } from "../../context/FavoritesContext"
 import Button from "../common/Button"
 import FavoriteCard from "./FavoriteCard"
+import FavoriteEmpty from "./FavoriteEmpty"
 
 export default function FavoritesContent() {
 	
@@ -18,21 +19,24 @@ export default function FavoritesContent() {
 					</div>
 				</div>
 				<Button 
-					className="flex gap-2 items-center p-2 bg-background-dark text-2xs rounded-full"
+					className={`${favorites.length <= 0 && "hidden"} flex gap-2 items-center p-2 bg-background-dark text-2xs rounded-full`}
 					onClick={ () => clearFavorites() }
 				>
 					<FaTrashAlt />
 					Alle leeren
 				</Button>
 			</div>
-			<ul className="max-h-full flex flex-col gap-2 px-2 pb-4 overflow-scroll">
-				{favorites.map(favorite => (
-					<FavoriteCard
-						key={ favorite.id }
-						{...favorite}
-					/>
-				))}
-			</ul>
+			{favorites.length > 0
+				? <ul className="max-h-full flex flex-col gap-2 px-2 pb-4 overflow-scroll">
+					{favorites.map(favorite => (
+						<FavoriteCard
+							key={ favorite.id }
+							{...favorite}
+						/>
+					))}
+				</ul>
+				: <FavoriteEmpty />
+			}
 		</div>
 	)
 }
