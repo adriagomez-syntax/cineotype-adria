@@ -1,8 +1,9 @@
 import type { SearchResponse, MovieDetails } from "../types/movie";
 import type { TmdbHttpError } from "../types/error";
 import { TmdbError } from "../assets/TmdbError";
+import { env } from "../libs/mockEnv";
 
-const BASE_URL = import.meta.env.VITE_PROXY_URL
+const BASE_URL = env.VITE_PROXY_URL
 
 export async function searchMovies(query: string, page: number): Promise<SearchResponse> {
 	const url = `${BASE_URL}/search?query=${encodeURIComponent(query)}&page=${page}`
