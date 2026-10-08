@@ -40,7 +40,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
 					{ movie.vote_average } / 5
 				</span>
 				<FavoriteButton
-					className="absolute top-2 right-2 z-10"
+					className="absolute top-2 right-2 z-10 text-background dark:text-text"
 					active={active}
 					onClick={ handleFavorite }
 				>

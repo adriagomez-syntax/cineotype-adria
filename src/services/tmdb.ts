@@ -2,18 +2,17 @@ import type { SearchResponse, MovieDetails } from "../types/movie";
 import type { TmdbHttpError } from "../types/error";
 import { TmdbError } from "../assets/TmdbError";
 
-const BASE_URL = "https://api.themoviedb.org/3"
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY
+const BASE_URL = import.meta.env.VITE_PROXY_URL
 
 export async function searchMovies(query: string, page: number): Promise<SearchResponse> {
-	const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&page=${page}&api_key=${API_KEY}`
+	const url = `${BASE_URL}/search?query=${encodeURIComponent(query)}&page=${page}`
 
 	const data = await doRequest<SearchResponse>(url)
 	return data
 }
 
 export async function getMovie(id: number): Promise<MovieDetails> {
-	const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
+	const url = `${BASE_URL}/movie/${id}`
 
 	const data = await doRequest<MovieDetails>(url)
 	return data
