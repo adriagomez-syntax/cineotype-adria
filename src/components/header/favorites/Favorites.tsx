@@ -1,5 +1,5 @@
-import { useFavoritesContext } from "../../context/FavoritesContext";
-import FavoriteButton from "../common/FavoriteButton";
+import { useFavoritesContext } from "../../../context/FavoritesContext";
+import FavoriteButton from "../../common/FavoriteButton";
 
 type Props = {
 	toggleOpen: () => void
