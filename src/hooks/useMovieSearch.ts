@@ -16,12 +16,15 @@ export default function useMovieSearch(query: string) {
 	}
 
 	useEffect(() => {
-		
 		let ignore = false
 		
 		async function load() {
 			
 			if (ignore) { return }
+
+			if (!ignore) {
+				setError(null)
+			}
 			
 			if (!ignore && query.trim() === "") { 
 				setMovies([])
@@ -32,7 +35,6 @@ export default function useMovieSearch(query: string) {
 
 			if (!ignore) {
 				setLoading(true)
-				setError(null)
 			}
 
 			try {

@@ -24,10 +24,10 @@ export default function Input({ icon, type = "text", placeholder = "", value, on
 	}
 
 	return (
-		<div className={`${className} flex gap-2 justify-between items-center p-2 bg-background-mid rounded-full`}>
+		<div className={`${className} flex gap-2 justify-between items-center p-2 bg-background-mid rounded-full overflow-hidden`}>
 			{Icon && <Icon className="text-primary" />}
 			<input
-				className="min-w-0 flex-1"
+				className="min-w-0 inset-0 flex-1"
 				type={ type }
 				placeholder={ placeholder }
 				value={ value }
