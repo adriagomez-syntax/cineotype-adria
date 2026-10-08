@@ -34,7 +34,7 @@ export default function useMovie(id: number | null) {
 			}
 		}
 
-		load()
+		void load()
 
 		return () => { ignore = true }
 	}, [id])

@@ -55,7 +55,7 @@ export default function useMovieSearch(query: string) {
 			}
 		}
 
-		load()
+		void load()
 
 		return () => { ignore = true; }
 	}, [query, currentPage])

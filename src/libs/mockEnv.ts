@@ -3,5 +3,5 @@ type Env = {
 }
 
 export const env: Env = {
-	VITE_PROXY_URL: import.meta.env.VITE_PROXY_URL
+	VITE_PROXY_URL: String(import.meta.env.VITE_PROXY_URL)
 };

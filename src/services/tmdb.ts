@@ -22,11 +22,11 @@ export async function getMovie(id: number): Promise<MovieDetails> {
 async function doRequest<T>(url: string): Promise<T> {
 	const response = await fetch(url)
 	if (!response.ok) {
-		const errorResp: TmdbHttpError = await response.json()
+		const errorResp: TmdbHttpError = await response.json() as TmdbHttpError
 		throw new TmdbError(response.status, errorResp.status_message)
 	}
 
-	const data: T = await response.json()
+	const data: T = await response.json() as T
 	return data
 }
 
