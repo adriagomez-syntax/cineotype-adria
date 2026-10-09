@@ -19,7 +19,7 @@ export default function SearchBar({ onSearch } : SearchBarProps) {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	, [debounced])
 	
-	/*function handleSubmit(event: React.SubmitEvent) {
+	/*function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
 		event.preventDefault()
 
 		onSearch(inputValue.trim())
